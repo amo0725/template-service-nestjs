@@ -1,0 +1,107 @@
+{
+  "name": "template-service-nestjs",
+  "version": "1.0.0",
+  "description": "template-service-nestjs",
+  "author": "Amo Feng <amo880725@gmail.com>",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "prepare": "husky install",
+    "env:config": "./scripts/env-config.sh",
+    "premigration": "rimraf dist",
+    "migration": "./scripts/migration.sh",
+    "preseeder": "rimraf dist",
+    "seeder": "./scripts/seeder.sh",
+    "kickstart": "./scripts/kickstart.sh"
+  },
+  "dependencies": {
+    "@nestjs/common": "9.2.1",
+    "@nestjs/core": "9.2.1",
+    "@nestjs/platform-express": "9.2.1",
+    "@nestjs/terminus": "9.1.4",
+    "@nestjs/typeorm": "9.0.1",
+    "@nestjs/axios": "1.0.1",
+    "@nestjs/swagger": "6.1.4",
+    "class-transformer": "0.5.1",
+    "class-validator": "0.13.2",
+    "dotenv": "16.0.3",
+    "dotenv-safe": "8.2.0",
+    "lodash": "4.17.21",
+    "mysql2": "2.3.3",
+    "reflect-metadata": "0.1.13",
+    "rimraf": "3.0.2",
+    "rxjs": "7.8.0",
+    "typeorm": "0.3.11",
+    "typeorm-transactional": "0.4.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.4.1",
+    "@commitlint/config-conventional": "17.4.0",
+    "@nestjs/cli": "9.1.8",
+    "@nestjs/schematics": "9.0.4",
+    "@nestjs/testing": "9.2.1",
+    "@types/express": "4.17.15",
+    "@types/jest": "29.2.5",
+    "@types/lodash": "4.14.191",
+    "@types/node": "18.11.18",
+    "@types/supertest": "2.0.12",
+    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/parser": "5.48.1",
+    "commitizen": "4.2.6",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.31.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.3",
+    "lint-staged": "13.1.0",
+    "jest": "29.3.1",
+    "prettier": "2.8.2",
+    "source-map-support": "0.5.21",
+    "supertest": "6.3.3",
+    "ts-jest": "29.0.3",
+    "ts-loader": "9.4.2",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "4.1.2",
+    "typescript": "4.9.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "**/*.ts?(x)": "bash -c tsc -p tsconfig.json --noEmit",
+    "*.{js,jsx,ts,tsx,md,html,css,json,yaml}": "prettier --write",
+    "{src,apps,libs,test,packages}/**/*.ts": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
